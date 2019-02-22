@@ -135,7 +135,7 @@ class GMVAECNNGraph(GMVAEGraph):
 
         print('\n[*] Defining Q(w|x)...')
         with tf.variable_scope('Qw_x', reuse=self.reuse):
-            Qz_x = ConvNet3Gauss(input_=self.x_batch, 
+            Qw_x = ConvNet3Gauss(input_=self.x_batch, 
                                  hidden_dim=self.w_dim*2,
                                  output_dim=self.w_dim, 
                                  reuse=self.reuse, 
@@ -148,8 +148,8 @@ class GMVAECNNGraph(GMVAEGraph):
             
 
         
-            self.w_x_mean = Qz_x.mean
-            self.w_x_var = Qz_x.var
+            self.w_x_mean = Qw_x.mean
+            self.w_x_var = Qw_x.var
 
         
         print('\n[*] Reparameterization trick...')
